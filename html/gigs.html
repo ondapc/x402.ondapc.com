@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- IF WE ARE HERE THE .htaccess FAILED -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <!-- THE REDIRECT: 0 SECONDS DELAY, GO TO THE NEW PAGE -->
+    <meta http-equiv="refresh" content="0; URL=https://gigs.ondapc.com/">
+    <script>
+        // THE 'replace' METHOD REMOVES /GOTOPAGE FROM BROWSER HISTORY
+        window.location.replace("https://gigs.ondapc.com/");
+    </script>    
+</head>
+<body>
+    <!-- FALLBACK MESSAGE IN CASE THE REDIRECT DOESN'T FIRE INSTANTLY -->
+    <p>Redirecting you to <a href="https://gigs.ondapc.com/">https://gigs.ondapc.com/</a> ...</p>
+</body>
+</html>

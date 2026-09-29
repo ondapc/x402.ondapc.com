@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deepseek + OpenAI = DO AI QUERY 😀</title>
+  <!-- Bootstrap 5 CSS (light, no extra theme) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Optional: Font Awesome for a clean search icon (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="/html/style.css">
+</head>
+<body>
+<form name="do_search" method="GET" action="/do_search/pay">
+  <div class="center-wrapper">
+    <div class="search-card">
+      <!-- page heading (optional, but keeps it clean) -->
+      <h5 class="text-center mb-4 fw-light text-secondary">
+        <i class="fa-solid fa-infinity fa-2x"></i><br/> Search multiple AI's at once 
+      </h5>
+      
+      <!-- main search input group: primary color all the way -->
+      <div class="input-group input-group-primary">
+        <!-- left icon: primary background (optional, but matches the primary theme) -->
+        <span class="input-group-text primary-icon" id="search-icon">
+          <i class="fas fa-search"></i>
+        </span>
+        
+        <!-- search input field -->
+        <input type="text" class="form-control form-control-lg" 
+			   name="q" 
+               placeholder="Type your search..." 
+               aria-label="Search" 
+               aria-describedby="search-icon">
+        
+        <!-- primary button with "Search" text -->
+        <button class="btn btn-primary btn-lg" type="submit">
+          <i class="fa-solid fa-angles-right"></i>
+        </button>
+        
+      </div>
+      
+      <!-- small hint / extra primary accent (optional) -->
+      <div class="text-center mt-3 text-muted small">
+        <span class="badge bg-primary-subtle text-primary-emphasis px-3 py-2 rounded-pill">
+          <i class="fa-solid fa-code"></i> Results will be JSON formated text
+        </span>
+      </div>
+    </div>
+  </div>
+</form>
+  <!-- Bootstrap 5 JS bundle (optional for any toggles, but not required for search) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

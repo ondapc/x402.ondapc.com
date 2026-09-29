@@ -1,0 +1,74 @@
+    /* ensure full viewport height, center content */
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    .center-wrapper {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f8f9fa; /* subtle light background, but keeps primary focus */
+    }
+    /* optional: extra spacious card style for the search box */
+    .search-card {
+      background: white;
+      padding: 2rem 2.5rem;
+      border-radius: 2rem;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      width: 100%;
+      max-width: 600px;
+      transition: all 0.2s ease;
+    }
+    /* primary color overrides for the input group */
+    .input-group-primary .form-control {
+      border-color: #0d6efd;  /* Bootstrap primary */
+      border-right: none;
+      box-shadow: none;
+      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+    .input-group-primary .form-control:focus {
+      border-color: #0d6efd;
+      box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25); /* primary shadow */
+      border-right: none;
+    }
+    .input-group-primary .btn-primary {
+      background-color: #0d6efd;
+      border-color: #0d6efd;
+      color: white;
+      transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+    }
+    .input-group-primary .btn-primary:hover {
+      background-color: #0b5ed7;
+      border-color: #0a58ca;
+    }
+    .input-group-primary .btn-primary:focus {
+      box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    }
+    /* fix for rounded corners on the right side (button) */
+    .input-group-primary .btn-primary {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    .input-group-primary .form-control {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    /* ensure the search icon is visible and primary */
+    .input-group-text.primary-icon {
+      background-color: #0d6efd;
+      color: white;
+      border-color: #0d6efd;
+      border-right: none;
+    }
+    /* if we use .input-group-text + .form-control, adjust borders */
+    .input-group .form-control:not(:first-child) {
+      border-left: none;
+    }
+    /* small screen tweak */
+    @media (max-width: 576px) {
+      .search-card {
+        padding: 1.5rem 1rem;
+        margin: 1rem;
+      }
+    }

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather JSON · x402</title>
+  <!-- Font & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, system-ui, sans-serif;
+      background: #f2f5f9;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .card {
+      max-width: 900px;
+      width: 100%;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 2.5rem;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25), 0 8px 20px -8px rgba(0,0,0,0.1);
+      padding: 2.5rem;
+      border: 1px solid rgba(255,255,255,0.5);
+      transition: all 0.2s ease;
+    }
+
+    @media (max-width: 600px) {
+      .card { padding: 1.75rem; }
+    }
+
+    /* header */
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 2.25rem;
+    }
+    .header i {
+      font-size: 2.2rem;
+      color: #2563eb;
+      background: rgba(37,99,235,0.12);
+      padding: 0.6rem;
+      border-radius: 1.2rem;
+      box-shadow: 0 4px 8px -4px rgba(37,99,235,0.2);
+    }
+    .header h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #0b1e3a, #1e3a8a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .header span {
+      font-weight: 400;
+      color: #475569;
+      font-size: 0.95rem;
+      margin-left: 0.25rem;
+      -webkit-text-fill-color: #475569;
+      background: none;
+    }
+    .badge {
+      margin-left: auto;
+      background: #e2e8f0;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: #1e293b;
+      letter-spacing: 0.3px;
+      border: 1px solid #cbd5e1;
+      backdrop-filter: blur(4px);
+      background: rgba(226,232,240,0.6);
+    }
+
+    /* form */
+    .form-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      background: #f8fafc;
+      padding: 1.5rem;
+      border-radius: 2rem;
+      border: 1px solid #e9edf2;
+      backdrop-filter: blur(4px);
+    }
+    .input-group {
+      flex: 1 1 160px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .input-group label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #64748b;
+      margin-left: 0.25rem;
+    }
+    .input-group .input-wrap {
+      display: flex;
+      align-items: center;
+      background: white;
+      border-radius: 60px;
+      padding: 0 1rem;
+      border: 1px solid #d1d9e6;
+      transition: all 0.2s;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+    }
+    .input-group .input-wrap:focus-within {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 4px rgba(37,99,235,0.15);
+    }
+    .input-group .input-wrap i {
+      color: #94a3b8;
+      font-size: 0.9rem;
+      margin-right: 0.5rem;
+      width: 1rem;
+    }
+    .input-group input {
+      border: none;
+      padding: 0.75rem 0;
+      font-size: 0.95rem;
+      font-weight: 500;
+      width: 100%;
+      background: transparent;
+      outline: none;
+      font-family: 'Inter', sans-serif;
+      color: #0b1e3a;
+    }
+    .input-group input::placeholder {
+      color: #b9c3d4;
+      font-weight: 400;
+    }
+    .input-group input[type="number"] {
+      -moz-appearance: textfield;
+    }
+    .input-group input[type="number"]::-webkit-outer-spin-button,
+    .input-group input[type="number"]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    .btn-submit {
+      flex: 0 0 auto;
+      background: #1e293b;
+      border: none;
+      color: white;
+      font-weight: 600;
+      padding: 0 2rem;
+      border-radius: 60px;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      cursor: pointer;
+      transition: 0.2s;
+      box-shadow: 0 8px 16px -8px rgba(0,0,0,0.2);
+      border: 1px solid #1e293b;
+      letter-spacing: 0.3px;
+      height: 48px;
+      margin-top: 1.15rem;
+      background: #0f172a;
+    }
+    .btn-submit i {
+      font-size: 1rem;
+      transition: transform 0.2s;
+    }
+    .btn-submit:hover {
+      background: #2563eb;
+      border-color: #2563eb;
+      transform: scale(1.02);
+      box-shadow: 0 12px 24px -10px #2563eb70;
+    }
+    .btn-submit:active {
+      transform: scale(0.97);
+    }
+    .btn-submit:disabled {
+      opacity: 0.6;
+      pointer-events: none;
+      filter: grayscale(0.4);
+    }
+
+ 
+    .placeholder-text {
+      color: #94a3b8;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      letter-spacing: 0.2px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 0;
+      gap: 0.5rem;
+    }
+    .placeholder-text i {
+      font-size: 2rem;
+      color: #475569;
+      opacity: 0.5;
+    }
+
+    /* scroll styling */
+    .response-body::-webkit-scrollbar {
+      width: 5px;
+    }
+    .response-body::-webkit-scrollbar-track {
+      background: #1a253b;
+      border-radius: 10px;
+    }
+    .response-body::-webkit-scrollbar-thumb {
+      background: #3b4a66;
+      border-radius: 10px;
+    }
+    .response-body::-webkit-scrollbar-thumb:hover {
+      background: #5b6f8f;
+    }
+
+    .footer-note {
+      margin-top: 1.5rem;
+      text-align: right;
+      font-size: 0.7rem;
+      color: #94a3b8;
+      letter-spacing: 0.2px;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 1.2rem;
+    }
+    .footer-note a {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .footer-note a:hover {
+      text-decoration: underline;
+    }
+    .footer-note i {
+      margin: 0 2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card" role="main">
+    <div class="header">
+      <i class="fas fa-cloud-sun-rain"></i>
+      <h1>Weather <span>· JSON</span></h1>
+      <div class="badge"><i class="fas fa-code"></i> x402</div>
+    </div>
+
+    <!-- Form -->
+    <form id="weatherForm" class="form-grid" autocomplete="off" method="GET" action="/weather/pay">
+      <div class="input-group">
+        <label for="lat"><i class="fas fa-map-pin"></i> Latitude</label>
+        <div class="input-wrap">
+          <i class="fas fa-location-dot"></i>
+          <input type="number" id="lat" name="lat" placeholder="e.g. 40.7128" step="any" value="40.7128" required>
+        </div>
+      </div>
+      <div class="input-group">
+        <label for="lon"><i class="fas fa-map-pin"></i> Longitude</label>
+        <div class="input-wrap">
+          <i class="fas fa-location-arrow"></i>
+          <input type="number" id="lon" name="lon" placeholder="e.g. -74.0060" step="any" value="-74.0060" required>
+        </div>
+      </div>
+      <button type="submit" class="btn-submit" id="fetchBtn">
+        <i class="fas fa-paper-plane"></i> Fetch
+      </button>
+    </form>
+
+    <!-- Response -->
+    <div class="footer-note">
+      <i class="fas fa-globe"></i>  <a href="/weather" target="_blank">x402.ondapc.com/weather</a> · real‑time
+    </div>
+  </div>
+
+</body>
+</html>

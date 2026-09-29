@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>✦ Zodiac ✦ - Daily Horoscope Service in English / Spanish</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome 6 (Free) - kept for header/footer icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      background-color: #f0f7ff;
+    }
+    .horoscope-card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border: none;
+      border-radius: 1rem;
+      background: white;
+      box-shadow: 0 0.5rem 1rem rgba(13, 110, 253, 0.1);
+      height: 100%;
+      padding: 1.5rem 0.5rem;
+      text-decoration: none; /* Remove underline from link */
+      color: inherit; /* Keep text color consistent */
+      display: block; /* Make the entire card clickable */
+      cursor: pointer;
+    }
+    .horoscope-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 1rem 2rem rgba(13, 110, 253, 0.25);
+      background: #f8fbff; /* Slight highlight on hover */
+    }
+    /* Large zodiac sign styling */
+    .zodiac-sign {
+      font-size: 4.5rem;
+      line-height: 1.2;
+      color: #0d6efd; /* Bootstrap primary blue */
+      display: block;
+      margin-bottom: 0.25rem;
+      font-weight: 400;
+    }
+    .card-title {
+      font-weight: 600;
+      color: #0a58ca;
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+    .card-text {
+      color: #6c757d;
+      font-size: 0.85rem;
+      margin-bottom: 0;
+    }
+    .zodiac-header {
+      background: linear-gradient(135deg, #0d6efd, #0a58ca);
+      color: white;
+      padding: 2rem 0;
+      border-radius: 0 0 2rem 2rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+    }
+    .zodiac-header h1 {
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+    .zodiac-header h1 i {
+      margin-right: 10px;
+    }
+    .zodiac-header .subtitle {
+      font-weight: 300;
+      opacity: 0.9;
+      font-size: 1.1rem;
+    }
+    .lang-toggle {
+      background: white;
+      border-radius: 50px;
+      padding: 0.4rem 0.8rem;
+      border: 1px solid #cfe2ff;
+      color: #0d6efd;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .lang-toggle:hover {
+      background: #0d6efd;
+      color: white;
+      border-color: #0d6efd;
+    }
+    .lang-toggle i {
+      margin-right: 6px;
+    }
+    .footer-badge {
+      background-color: #e9f0ff;
+      color: #0d6efd;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 500;
+      display: inline-block;
+      border: 1px solid #cfe2ff;
+    }
+    .footer-badge i {
+      margin-right: 8px;
+      color: #0a58ca;
+    }
+    .container-custom {
+      max-width: 1200px;
+    }
+    /* Slightly adjust card layout for better balance */
+    .card-body {
+      padding: 0.5rem 0.25rem;
+    }
+    @media (max-width: 576px) {
+      .zodiac-sign {
+        font-size: 3.5rem;
+      }
+    }
+    /* Helper to make entire card clickable */
+    .stretched-link-wrapper {
+      position: relative;
+    }
+    /* Override Bootstrap's stretched-link to work with our card */
+    .horoscope-card .stretched-link {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+      text-indent: -9999px; /* Hide link text */
+      overflow: hidden;
+    }
+    /* Ensure card content stays above the link for proper display */
+    .horoscope-card .card-body {
+      position: relative;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header with primary blue gradient -->
+  <header class="zodiac-header text-center">
+    <div class="container container-custom">
+      <h1>
+        <i class="fa-solid fa-globe"></i> Zodiac <i class="fa-solid fa-moon"></i>
+      </h1>
+      <div class="d-flex justify-content-center align-items-center gap-3 flex-wrap">
+        <span class="subtitle">
+          <i class="fas fa-star"></i> Daily Horoscope in JSON format
+        </span>
+        <span class="lang-toggle">
+          <i class="fas fa-language"></i> English / Spanish
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main content: 12 zodiac signs as clickable cards -->
+  <main class="container container-custom pb-5">
+    <div class="row g-4 justify-content-center">
+      <!-- Aries -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#paywall" data-bs-url="https://x402.ondapc.com/horoscope/pay"class="horoscope-card text-center" target="_blank" rel="noopener noreferrer">
+          <div class="card-body">
+            <span class="zodiac-sign">♈</span>
+            <h5 class="card-title">Aries</h5>
+            <p class="card-text">Mar 21 – Apr 19</p>
+          </div>
+        </a>
+      </div>
+      <!-- Taurus -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#paywall" data-bs-url="https://x402.ondapc.com/horoscope/pay"class="horoscope-card text-center" target="_blank" rel="noopener noreferrer">
+          <div class="card-body">
+            <span class="zodiac-sign">♉</span>
+            <h5 class="card-title">Taurus</h5>
+            <p class="card-text">Apr 20 – May 20</p>
+          </div>
+        </a>
+      </div>
+      <!-- Gemini -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#paywall" data-bs-url="https://x402.ondapc.com/horoscope/pay"class="horoscope-card text-center" target="_blank" rel="noopener noreferrer">
+          <div class="card-body">
+            <span class="zodiac-sign">♊</span>
+            <h5 class="card-title">Gemini</h5>
+            <p class="card-text">May 21 – Jun 20</p>
+          </div>
+        </a>
+      </div>
+      <!-- Cancer -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#paywall" data-bs-url="https://x402.ondapc.com/horoscope/pay"class="horoscope-card text-center" target="_blank" rel="noopener noreferrer">
+          <div class="card-body">
+            <span class="zodiac-sign">♋</span>
+            <h5 class="card-title">Cancer</h5>
+            <p class="card-text">Jun 21 – Jul 22</p>
+          </div>
+        </a>
+      </div>
+      <!-- Leo -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#paywall" data-bs-url="https://x402.ondapc.com/horoscope/pay"class="horoscope-card text-center" target="_blank" rel="noopener noreferrer">
+          <div class="card-body">
+            <span class="zodiac-sign">♌</span>
+            <h5 class="card-title">Leo</h5>
+            <p class="card-text">Jul 23 – Aug 22</p>
+          </div>
+        </a>
+      </div>
+      <!-- Virgo -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#paywall" data-bs-url="https://x402.ondapc.com/horoscope/pay"class="horoscope-card text-center" target="_blank" rel="noopener noreferrer">
+          <div class="card-body">
+            <span class="zodiac-sign">♍</span>
+            <h5 class="card-title">Virgo</h5>
+            <p class="card-text">Aug 23 – Sep 22</p>
+          </div>
+        </a>
+      </div>
+      <!-- Libra -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#paywall" data-bs-url="https://x402.ondapc.com/horoscope/pay"class="horoscope-card text-center" target="_blank" rel="noopener noreferrer">
+          <div class="card-body">
+            <span class="zodiac-sign">♎</span>
+            <h5 class="card-title">Libra</h5>
+            <p class="card-text">Sep 23 – Oct 22</p>
+          </div>
+        </a>
+      </div>
+      <!-- Scorpio -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#paywall" data-bs-url="https://x402.ondapc.com/horoscope/pay"class="horoscope-card text-center" target="_blank" rel="noopener noreferrer">
+          <div class="card-body">
+            <span class="zodiac-sign">♏</span>
+            <h5 class="card-title">Scorpio</h5>
+            <p class="card-text">Oct 23 – Nov 21</p>
+          </div>
+        </a>
+      </div>
+      <!-- Sagittarius -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#paywall" data-bs-url="https://x402.ondapc.com/horoscope/pay"class="horoscope-card text-center" target="_blank" rel="noopener noreferrer">
+          <div class="card-body">
+            <span class="zodiac-sign">♐</span>
+            <h5 class="card-title">Sagittarius</h5>
+            <p class="card-text">Nov 22 – Dec 21</p>
+          </div>
+        </a>
+      </div>
+      <!-- Capricorn -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#paywall" data-bs-url="https://x402.ondapc.com/horoscope/pay"class="horoscope-card text-center" target="_blank" rel="noopener noreferrer">
+          <div class="card-body">
+            <span class="zodiac-sign">♑</span>
+            <h5 class="card-title">Capricorn</h5>
+            <p class="card-text">Dec 22 – Jan 19</p>
+          </div>
+        </a>
+      </div>
+      <!-- Aquarius -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#paywall" data-bs-url="https://x402.ondapc.com/horoscope/pay"class="horoscope-card text-center" target="_blank" rel="noopener noreferrer">
+          <div class="card-body">
+            <span class="zodiac-sign">♒</span>
+            <h5 class="card-title">Aquarius</h5>
+            <p class="card-text">Jan 20 – Feb 18</p>
+          </div>
+        </a>
+      </div>
+      <!-- Pisces -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#paywall" data-bs-url="https://x402.ondapc.com/horoscope/pay"class="horoscope-card text-center" target="_blank" rel="noopener noreferrer">
+          <div class="card-body">
+            <span class="zodiac-sign">♓</span>
+            <h5 class="card-title">Pisces</h5>
+            <p class="card-text">Feb 19 – Mar 20</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer with Algorand service badge -->
+  <footer class="text-center pb-4">
+    <div class="container container-custom">
+      <div class="footer-badge">
+        <i class="fas fa-globe"></i> An x402 Algorand Service
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  
+  
+<div class="modal fade" id="paywall" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-primary">
+        <h5 class="modal-title"><img src="/images/algorand-algo-icon.png" /></h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body p-0">
+        <iframe id="pageFrame" src="" style="width:100%; height:55vh; border:none;"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.getElementById('paywall').addEventListener('show.bs.modal', function(e) {
+  const url = e.relatedTarget.getAttribute('data-bs-url');
+  document.getElementById('pageFrame').src = url;
+});
+</script>  
+  
+  
+  
+</body>
+</html>
