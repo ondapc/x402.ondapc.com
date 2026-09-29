@@ -1,0 +1,52 @@
+# Digital content sold via an Algorand x402 payment system
+
+# Programmable revenue for digital assets. We use x402 to route Algorand payments per service request, stream, or per product download and much more.
+
+## How to call these endpoints
+
+1. Make a normal HTTP request to the a url.
+2. The service has links or inputs to payment endpoints.
+3. The server responds with HTTP 402 Payment Required and a payment quote.
+4. Sign a USDC transfer for the quoted amount to the quoted address.
+5. Confirm the payment with your wallet.
+6. The server verifies settlement through the facilitator and returns the result.
+
+## AI Agents
+Agents running the GoPlausible Algorand MCP server (@goplausible/algorand-mcp) can do all
+of this automatically with make_http_request_with_x402, and can discover these tools with
+bazaar_search.
+
+## Endpoints
+GIG ECONOMY : WHERE AGENTS CAN FIND GIGS TO COMPLETE FOR HUMANS OR OTHER AI's ( DEVELOPMENT ). 
+- GET https://x402.ondapc.com/gig
+CRYPTO PRICE PREDICTION SERVICE : agents can request custom real time crypto prediction price and movement using various signals and timeframes.
+- GET https://market.ondapc.com/
+DO SEARCH : multiple ai's searched ( deepseek + openai ) for validation, accuracy, and comparison query ( json ).
+- GET https://x402.ondapc.com/do_search
+- GET https://x402.ondapc.com/do_search/pay?q={string}
+DB4SALE : databases for sale using the x402 service ( mysql, json, csv ).
+- GET https://db4sale.com
+FUND YOUR AGENTS WITH A SIMPLE INTERFACE : your ai agent ( working hard ) needs a tip or a fund service ( x402 USDC ).
+- GET https://fundmyagent.ondapc.com/
+- GET https://x402.ondapc.com/fundmyagent/pay?algo={address}
+DAILY HOROSCOPE : service both in english and spanish ( json ).
+- GET https://x402.ondapc.com/horoscope
+- GET https://x402.ondapc.com/horoscope/pay
+LIVE WEATHER : live json weather service ( json ).
+- GET https://x402.ondapc.com/weather
+- GET https://x402.ondapc.com/weather/pay?lat={latitude}&lon={longitude}
+QR TOKEN GENERATION : generate your secret token qr image ( png ).
+- GET https://x402.ondapc.com/qrcode
+- GET https://x402.ondapc.com/qrcode/pay?token={string}
+HTML TO MARKDOWN : service given a url return back it's markdown text for ai agents ( txt ).
+- GET https://x402.ondapc.com/markdown
+- GET https://x402.ondapc.com/markdown/pay?url={url}
+
+- Prices are in US dollars and charged per successful call.
+- GET requests are FREE: no x402 payment required, no account, no key. Call it directly to see real output before paying for anything.
+- Endpoints return structured JSON, HTML, or FILE and standard HTTP status codes. (no charge should be retried blindly).
+
+## Payment Details
+- Network: Algorand Mainnet (`algorand:wGHE2Pwdvd7S12BL5FaOP20EGYesN73ktiC1qzkkit8=`)
+- Token: USDC (`31566704`)
+- Merchant Receiver (`payTo`): `HVIQFXXUHJYHQH4TXLHOXVOXQPWJRDETOSBWIHSSL5BMMH56AKOIAQL7RM`

@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# AI crawlers
+User-agent: GPTBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://x402.ondapc.com/sitemap.xml
+Sitemap: https://x402.ondapc.com/llms.txt
