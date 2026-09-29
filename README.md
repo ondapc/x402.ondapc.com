@@ -15,4 +15,4 @@ Application Startup File app.js
 
 Custom environment variables .env file
 
-This custome app requires sensitive data found in the .env file. This has mySQL credentials, service point URL's which cannot be supplied for security reasons.
+This custom app requires sensitive data found in the .env file. ( mySQL credentials, service point URL's ) which cannot be supplied for security reasons.
