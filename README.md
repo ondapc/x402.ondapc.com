@@ -15,4 +15,8 @@ Application Startup File app.js
 
 Custom environment variables .env file
 
+In order to get the paywall working, I had to edit the source file in 
+
+/modules/@x402-avm/paywall/dist/esm/index.js
+
 This custom app requires sensitive data found in the .env file. ( mySQL credentials, service point URL's ) which cannot be supplied for security reasons.
